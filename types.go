@@ -3,16 +3,16 @@ package kodelabs
 import "time"
 
 type Message struct {
-	State                  string
-	Version                string
-	CustomerName           string
-	SiteName               string
-	Gateway                string
-	Controller             string
-	DeviceType             string
-	ControllerSerialNumber string
-	DeviceName             string
-	DeviceSerialNumber     string
-	Data                   map[string]interface{}
-	Timestamp              time.Time
+	State                string
+	Version              string
+	CustomerName         string
+	SiteName             string
+	Gateway              string
+	Controller           string
+	DeviceType           string
+	ControllerIdentifier string
+	DeviceName           string
+	DeviceIdentifier     string
+	Data                 map[string]interface{}
+	Timestamp            time.Time
 }

@@ -13,14 +13,14 @@ func ConvertToInverterAPIv2Payload(payload Message) []map[string]any {
 	}
 
 	if payload.Data["SerialNo1"] == nil {
-		deviceSerialNumber := payload.DeviceSerialNumber
-		deviceSerialNumberPoint := map[string]any{
+		deviceIdentifier := payload.DeviceIdentifier
+		deviceIdentifierPoint := map[string]any{
 			"ts":         payload.Timestamp.Unix(),
 			"registerNr": "SerialNo1",
-			"value":      deviceSerialNumber,
+			"value":      deviceIdentifier,
 		}
 
-		points = append(points, deviceSerialNumberPoint)
+		points = append(points, deviceIdentifierPoint)
 	}
 
 	for key, value := range payload.Data {

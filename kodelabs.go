@@ -35,12 +35,12 @@ func SendPostRequest(message Message, payload any, url, authToken string, logger
 	gateway := message.Gateway
 	controller := message.Controller
 	deviceType := message.DeviceType
-	controllerSerialNumber := message.ControllerSerialNumber
+	controllerIdentifier := message.ControllerIdentifier
 	deviceName := message.DeviceName
-	deviceSerialNumber := message.DeviceSerialNumber
+	deviceIdentifier := message.DeviceIdentifier
 
-	logger.Info(fmt.Sprintf("Posting to Kodelabs -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerSerialNumber, deviceType, deviceSerialNumber, deviceName))
-	logger.Debug(fmt.Sprintf("Posting to Kodelabs -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerSerialNumber, deviceType, deviceSerialNumber, deviceName), zap.String("url", url), zap.Any("data", payload))
+	logger.Info(fmt.Sprintf("Posting to Kodelabs -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerIdentifier, deviceType, deviceIdentifier, deviceName))
+	logger.Debug(fmt.Sprintf("Posting to Kodelabs -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerIdentifier, deviceType, deviceIdentifier, deviceName), zap.String("url", url), zap.Any("data", payload))
 
 	jsonData, err := json.Marshal(payload)
 	if err != nil {
@@ -80,8 +80,8 @@ func SendPostRequest(message Message, payload any, url, authToken string, logger
 
 	elapsedTime := time.Since(startTime)
 
-	logger.Info(fmt.Sprintf("Response -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerSerialNumber, deviceType, deviceSerialNumber, deviceName), zap.String("status", response.Status))
-	logger.Debug(fmt.Sprintf("Response -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerSerialNumber, deviceType, deviceSerialNumber, deviceName), zap.String("status", response.Status), zap.String("duration", elapsedTime.String()), zap.String("message", response.Message))
+	logger.Info(fmt.Sprintf("Response -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerIdentifier, deviceType, deviceIdentifier, deviceName), zap.String("status", response.Status))
+	logger.Debug(fmt.Sprintf("Response -> %s :: %s :: %s :: %s :: %s :: %s :: %s :: %s", gateway, customer, siteName, controller, controllerIdentifier, deviceType, deviceIdentifier, deviceName), zap.String("status", response.Status), zap.String("duration", elapsedTime.String()), zap.String("message", response.Message))
 
 	return nil, nil
 }
