@@ -7,7 +7,6 @@ type Message struct {
 	Version              string
 	CustomerName         string
 	SiteName             string
-	Gateway              string
 	Controller           string
 	DeviceType           string
 	ControllerIdentifier string
